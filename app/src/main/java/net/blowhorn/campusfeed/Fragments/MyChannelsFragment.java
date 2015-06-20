@@ -3,6 +3,7 @@ package net.blowhorn.campusfeed.Fragments;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,10 +50,12 @@ public class MyChannelsFragment extends Fragment {
         });
         String userId = getActivity().getIntent().getExtras().getString(Constants.Keys.USER_ID);
         httpGetAsyncTaskMyChannels.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,
-                Constants.URL_GET_MY_CHANNELS(userId), jsonObjectMyChannels.toString());
+                Constants.URL_GET_MY_CHANNELS(userId,"-1","0"), jsonObjectMyChannels.toString());
+        //-1 and 0, i.e limit and offset will have to be changed later according to data in DB
     }
 
     private void handleMyChannelsData(String result){
+        Log.e("MyChannelsFragment",result);
         try {
             JSONObject jsonObject = new JSONObject(result);
             String status = jsonObject.getString(Constants.Keys.STATUS);

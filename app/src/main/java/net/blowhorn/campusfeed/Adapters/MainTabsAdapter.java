@@ -3,6 +3,7 @@ package net.blowhorn.campusfeed.Adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import net.blowhorn.campusfeed.Fragments.AllChannelsFragment;
 import net.blowhorn.campusfeed.Fragments.FeedFragment;

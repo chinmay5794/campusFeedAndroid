@@ -48,7 +48,7 @@ public class Constants {
 
     public static String mAuthToken = null;
 
-    public static final String URL_ROOT = "192.168.0.109:8080";
+    public static final String URL_ROOT = "http://192.168.1.12:8080";
     public static final String URL_LOGIN = URL_ROOT + "/login";
     public static final String URL_GET_ALL_CHANNELS = URL_ROOT + "/channels";
 
@@ -56,8 +56,8 @@ public class Constants {
         return URL_GET_ALL_CHANNELS + "?" + channelId;
     }
 
-    public static String URL_GET_MY_CHANNELS(String userId) {
-        return URL_ROOT + "/users/" + userId + "/channels";
+    public static String URL_GET_MY_CHANNELS(String userId, String limit, String offset) {
+        return URL_ROOT + "/users/" + userId + "/channels" + "?limit=" + limit + "&offset=" + offset;
     }
 
     public static String URL_GET_POSTS_OF_CHANNEL(String channelId, String limit, String offset) {

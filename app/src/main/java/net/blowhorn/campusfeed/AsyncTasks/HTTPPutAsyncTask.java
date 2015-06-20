@@ -3,9 +3,11 @@ package net.blowhorn.campusfeed.AsyncTasks;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import net.blowhorn.campusfeed.Utils.Constants;
 import net.blowhorn.campusfeed.Interfaces.OnHTTPCompleteListener;
+import net.blowhorn.campusfeed.Utils.NetworkUtil;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -55,47 +57,50 @@ public class HTTPPutAsyncTask extends AsyncTask<String,String,String> {
 
         url = params[0];
 
-        try {
-            HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPut = new HttpPost(params[0]);
+        if(NetworkUtil.isNetworkAvailable(context)) {
+            try {
+                HttpClient httpClient = new DefaultHttpClient();
+                HttpPost httpPut = new HttpPost(params[0]);
 
-            StringEntity stringEntity = new StringEntity(params[1]);
+                StringEntity stringEntity = new StringEntity(params[1]);
 
-            httpPut.setHeader("Accept", "application/json");
-            httpPut.setHeader("token",Constants.mAuthToken);
-            httpPut.setHeader("Content-type", "application/json");
-            httpPut.setEntity(stringEntity);
+                httpPut.setHeader("Accept", "application/json");
+                httpPut.setHeader("token", Constants.mAuthToken);
+                httpPut.setHeader("Content-type", "application/json");
+                httpPut.setEntity(stringEntity);
 
-            HttpResponse httpResponse = httpClient.execute(httpPut);
-            if(httpResponse.getStatusLine().getStatusCode() == 200) {
-                Log.i(TAG + "URL: " + params[0], "Successfully sent PUT data");
+                HttpResponse httpResponse = httpClient.execute(httpPut);
+                if (httpResponse.getStatusLine().getStatusCode() == 200) {
+                    Log.i(TAG + "URL: " + params[0], "Successfully sent PUT data");
+                } else {
+                    Log.i(TAG + "URL: " + params[0], "HTTP Status code is " +
+                            String.valueOf(httpResponse.getStatusLine().getStatusCode()));
+                }
+
+                //-- Retrieve the response from the server
+                String line = "";
+                StringBuilder result = new StringBuilder();
+                InputStream is = httpResponse.getEntity().getContent();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+                while ((line = reader.readLine()) != null) {
+                    result.append(line);
+                }
+
+                return result.toString();
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+                Log.e(TAG + "URL: " + params[0], "Unsupported Encoding Exception");
+            } catch (ClientProtocolException e) {
+                e.printStackTrace();
+                Log.e(TAG + "URL: " + params[0], "Client Protocol Exception");
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.e(TAG + "URL: " + params[0], "IOException");
             }
-            else {
-                Log.i(TAG + "URL: " + params[0],"Improper server response");
-            }
-
-            //-- Retrieve the response from the server
-            String line = "";
-            StringBuilder result = new StringBuilder();
-            InputStream is = httpResponse.getEntity().getContent();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-            while ((line = reader.readLine()) != null) {
-                result.append(line);
-            }
-
-            return result.toString();
         }
-        catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-            Log.i(TAG + "URL: " + params[0], "Unsupported Encoding Exception");
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
-            Log.i(TAG + "URL: " + params[0], "Client Protocol Exception");
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.i(TAG + "URL: " + params[0], "IOException");
+        else{
+            Log.w(TAG, "No internet connection");
         }
-
 
         return null;
     }
@@ -103,7 +108,15 @@ public class HTTPPutAsyncTask extends AsyncTask<String,String,String> {
     @Override
     protected void onPostExecute(String response) {
         super.onPostExecute(response);
-        listener.onHTTPDataReceived(response, url);
+        if(!response.isEmpty()) {
+            listener.onHTTPDataReceived(response, url);
+        }
+        else{
+            Log.w(TAG,"Null response");
+        }
+        if(NetworkUtil.isNetworkAvailable(context)){
+            Toast.makeText(context, "No internet connection", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void setHTTPCompleteListener(OnHTTPCompleteListener listener){
