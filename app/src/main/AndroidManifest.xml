@@ -28,6 +28,18 @@
             android:label="@string/app_name" >
         </activity>
 
+        <activity
+            android:name=".Activities.ChannelDescriptionActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleInstance">
+        </activity>
+
+        <activity
+            android:name=".Activities.ChannelPostsActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleInstance">
+        </activity>
+
     </application>
 
 </manifest>

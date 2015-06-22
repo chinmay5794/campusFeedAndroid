@@ -21,6 +21,8 @@ import org.json.JSONObject;
  */
 public class FeedFragment extends Fragment {
 
+    private String TAG = "FeedFragment";
+
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

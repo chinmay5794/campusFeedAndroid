@@ -1,4 +1,4 @@
-package net.blowhorn.campusfeed;
+package net.blowhorn.campusfeed.DTO;
 
 import java.util.HashMap;
 
@@ -11,6 +11,7 @@ public class ChannelDTO {
     private String channelName = null;
     private String channelImgUrl = null;
     private int numFollowers = 0;
+    private int numViews = 0;
     private String created_time = null;
     private String description = null;
     public class Admin {
@@ -54,6 +55,12 @@ public class ChannelDTO {
     public void setNumFollowers(int numFollowers) {
         this.numFollowers = numFollowers;
     }
+    public int getNumViews(){
+        return numViews;
+    }
+    public void setNumViews(int numViews){
+        this.numViews = numViews;
+    }
     public String getCreated_time() {
         return created_time;
     }
@@ -65,5 +72,14 @@ public class ChannelDTO {
     }
     public void setDescription(String description) {
         this.description = description;
+    }
+    public boolean isDetailAvailable(){
+        if(created_time != null && description != null &&
+                this.admin.getFirstName() !=null && this.admin.getLastName() != null){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

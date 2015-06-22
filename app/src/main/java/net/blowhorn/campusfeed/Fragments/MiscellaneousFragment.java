@@ -19,6 +19,8 @@ import org.json.JSONObject;
  */
 public class MiscellaneousFragment extends Fragment {
 
+    private String TAG = "MiscellaneousFragment";
+
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

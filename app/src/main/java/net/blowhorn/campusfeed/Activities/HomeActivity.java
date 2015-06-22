@@ -23,7 +23,7 @@ public class HomeActivity extends FragmentActivity implements android.app.Action
     ViewPager mViewPager;
     android.app.ActionBar actionBar;
 
-    private String tabNames[] = {"FEED","MY CHANNELS","ALL CHANNELS","SETTINGS"};
+    private String tabNames[] = {"FEED","FOLLOWED CHANNELS","ALL CHANNELS","SETTINGS"};
     //TODO:change it to icons later
 
     @Override
@@ -78,4 +78,6 @@ public class HomeActivity extends FragmentActivity implements android.app.Action
     public void onPageScrollStateChanged(int state) {
 
     }
+
+
 }

@@ -28,7 +28,7 @@ import java.io.UnsupportedEncodingException;
 
 //<1,2,3> => inputType of <doInBackground,setProgressUpdate,onPostExecute>
 
-//Conventions : - params[0] = URL ,params[1] = JSON String
+//Conventions : - params[0] = URL ,params[1] = JSON String if exists
 public class HTTPGetAsyncTask extends AsyncTask<String,String,String> {
 
     private String TAG = "HTTPGet";

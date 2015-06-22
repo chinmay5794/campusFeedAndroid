@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:layout_height="match_parent">
 
     <ListView
         android:id="@android:id/list"
@@ -15,6 +14,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="more"
-        android:id="@+id/allChannels_btn_more"/>
+        android:id="@+id/channelPosts_btn_more"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="view description"
+        android:id="@+id/channelPosts_btn_description"/>
 
 </LinearLayout>

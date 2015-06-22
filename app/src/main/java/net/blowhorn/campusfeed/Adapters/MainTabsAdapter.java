@@ -3,11 +3,10 @@ package net.blowhorn.campusfeed.Adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
 
 import net.blowhorn.campusfeed.Fragments.AllChannelsFragment;
 import net.blowhorn.campusfeed.Fragments.FeedFragment;
-import net.blowhorn.campusfeed.Fragments.MyChannelsFragment;
+import net.blowhorn.campusfeed.Fragments.FollowedChannelsFragment;
 import net.blowhorn.campusfeed.Fragments.MiscellaneousFragment;
 
 /**
@@ -29,7 +28,7 @@ public class MainTabsAdapter extends FragmentPagerAdapter {
                 retFragment = new FeedFragment();
                 break;
             case 1:
-                retFragment = new MyChannelsFragment();
+                retFragment = new FollowedChannelsFragment();
                 break;
             case 2:
                 retFragment = new AllChannelsFragment();

@@ -28,6 +28,7 @@ public class Constants {
         public static final String POST_IMAGE_URL = "img_url";
         public static final String POST_TIMESTAMP = "time";
         public static final String POST_TEXT = "text";
+        public static final String POST_PENDING_BIT = "pending_bit";
         public static final String POST_AUTHOR_FULL_NAME = "user_full_name";
         public static final String POST_AUTHOR_IMAGE_URL = "user_img_url";
         public static final String POST_AUTHOR_BRANCH = "user_branch";
@@ -44,7 +45,10 @@ public class Constants {
     public static boolean allChannelsDataFetched = false;
     public static boolean feedDataFetched = false;
     public static boolean miscellaneousDataFetched = false;
-    public static boolean myChannelsDataFetched = false;
+    public static boolean followedChannelsDataFetched = false;
+
+    public static final int channels_fetch_limit = 10;
+    public static final int posts_fetch_limit = 10;
 
     public static String mAuthToken = null;
 
@@ -56,7 +60,7 @@ public class Constants {
         return URL_GET_ALL_CHANNELS + "?" + channelId;
     }
 
-    public static String URL_GET_MY_CHANNELS(String userId, String limit, String offset) {
+    public static String URL_GET_FOLLOWED_CHANNELS(String userId, String limit, String offset) {
         return URL_ROOT + "/users/" + userId + "/channels" + "?limit=" + limit + "&offset=" + offset;
     }
 

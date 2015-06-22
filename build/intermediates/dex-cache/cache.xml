@@ -2,11 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/home/chinmay/Campusfeed/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
+        jar="/home/chinmay/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="/home/chinmay/Campusfeed/app/build/intermediates/pre-dexed/debug/classes-cb54fdeb8e744ae02b492cbe058f1e2372a59191.jar" />
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/home/chinmay/Campusfeed/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-db92dd0b41280d7896ede21d82edb257aa7e7b92.jar" />
     </item>
     <item
         jar="/home/chinmay/campusFeedAndroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
@@ -16,27 +16,6 @@
         <dex dex="/home/chinmay/campusFeedAndroid/app/build/intermediates/pre-dexed/debug/classes-61b427dac849897b7fb79436e4f313ca00ef9137.jar" />
     </item>
     <item
-        jar="/home/chinmay/campusFeedAndroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="/home/chinmay/campusFeedAndroid/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-ba5542ce9de20547d6675fdfa81b4a30d4556f96.jar" />
-    </item>
-    <item
-        jar="/home/chinmay/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="/home/chinmay/Campusfeed/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-db92dd0b41280d7896ede21d82edb257aa7e7b92.jar" />
-    </item>
-    <item
-        jar="/home/chinmay/campusFeedAndroid/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="/home/chinmay/campusFeedAndroid/app/build/intermediates/pre-dexed/debug/classes-c7e3739cbe5404dacb4c834e2360dc551812aafc.jar" />
-    </item>
-    <item
         jar="/home/chinmay/Campusfeed/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -44,11 +23,39 @@
         <dex dex="/home/chinmay/Campusfeed/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-e4b7a98567da76ff2f6b9b6a55e1d254dafaeb22.jar" />
     </item>
     <item
+        jar="/home/chinmay/campusFeedAndroid/app/libs/picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/home/chinmay/campusFeedAndroid/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-d8819a4f9ac0842f71e38649eebbfefc6fc28204.jar" />
+    </item>
+    <item
+        jar="/home/chinmay/Campusfeed/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/home/chinmay/Campusfeed/app/build/intermediates/pre-dexed/debug/classes-cb54fdeb8e744ae02b492cbe058f1e2372a59191.jar" />
+    </item>
+    <item
+        jar="/home/chinmay/campusFeedAndroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/home/chinmay/campusFeedAndroid/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-ba5542ce9de20547d6675fdfa81b4a30d4556f96.jar" />
+    </item>
+    <item
         jar="/home/chinmay/Campusfeed/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
         <dex dex="/home/chinmay/Campusfeed/app/build/intermediates/pre-dexed/debug/classes-92676bd3ee8cb02f2e825de0928eb13d48cf373f.jar" />
+    </item>
+    <item
+        jar="/home/chinmay/campusFeedAndroid/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/home/chinmay/campusFeedAndroid/app/build/intermediates/pre-dexed/debug/classes-c7e3739cbe5404dacb4c834e2360dc551812aafc.jar" />
     </item>
 
 </items>
