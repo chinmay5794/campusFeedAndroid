@@ -4,4 +4,10 @@
     android:layout_height="match_parent"
     android:background="#123456">
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create a channel"
+        android:id="@+id/misc_btn_createChannel"/>
+
 </LinearLayout>

@@ -33,7 +33,7 @@ public class ChannelListAdapter extends ArrayAdapter<ChannelDTO> {
         View rowView = inflater.inflate(R.layout.list_item_channel, parent, false);
 
         //setup data in row
-        TextView tvChannelName = (TextView) rowView.findViewById(R.id.listItem_tv_channelName);
+        /*TextView tvChannelName = (TextView) rowView.findViewById(R.id.listItem_tv_channelName);
         tvChannelName.setText(channelList.get(position).getChannelName());
         TextView tvChannelFollowCount = (TextView) rowView.findViewById(R.id.listItem_tv_followCount);
         tvChannelFollowCount.setText(channelList.get(position).getNumFollowers());
@@ -41,7 +41,7 @@ public class ChannelListAdapter extends ArrayAdapter<ChannelDTO> {
         tvChannelViewCount.setText(channelList.get(position).getNumViews());
         ImageView ivChannelImage = (ImageView) rowView.findViewById(R.id.listItem_iv_channelImage);
         Picasso.with(getContext()).load(channelList.get(position).getChannelImgUrl()).fit().centerCrop().into(ivChannelImage);
-
+        */
         return rowView;
     }
 }

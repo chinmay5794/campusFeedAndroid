@@ -15,6 +15,8 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicHeader;
+import org.apache.http.protocol.HTTP;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -55,6 +57,8 @@ public class HTTPPostAsyncTask extends AsyncTask<String,String,String> {
     @Override
     protected String doInBackground(String... params) {
 
+        url = params[0];
+
         if(NetworkUtil.isNetworkAvailable(context)) {
             try {
                 HttpClient httpClient = new DefaultHttpClient();
@@ -65,6 +69,7 @@ public class HTTPPostAsyncTask extends AsyncTask<String,String,String> {
                 httpPost.setHeader("Accept", "application/json");
                 httpPost.setHeader("token", Constants.mAuthToken);
                 httpPost.setHeader("Content-type", "application/json");
+                stringEntity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
                 httpPost.setEntity(stringEntity);
 
                 HttpResponse httpResponse = httpClient.execute(httpPost);
@@ -94,6 +99,8 @@ public class HTTPPostAsyncTask extends AsyncTask<String,String,String> {
             } catch (IOException e) {
                 e.printStackTrace();
                 Log.e(TAG + "URL: " + params[0], "IOException");
+            }catch (Exception e){
+                e.printStackTrace();
             }
         }
         else{
@@ -106,11 +113,16 @@ public class HTTPPostAsyncTask extends AsyncTask<String,String,String> {
     @Override
     protected void onPostExecute(String response) {
         super.onPostExecute(response);
-        if(!response.isEmpty()) {
-            listener.onHTTPDataReceived(response, url);
-        }
-        else{
-            Log.w(TAG,"Null response");
+        try{
+            if(!response.isEmpty()) {
+                Log.e(TAG + "response:", response);
+                listener.onHTTPDataReceived(response, url);
+            }
+            else{
+                Log.w(TAG, "Null response");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
         if(!NetworkUtil.isNetworkAvailable(context)){
             Toast.makeText(context, "No internet connection", Toast.LENGTH_SHORT).show();

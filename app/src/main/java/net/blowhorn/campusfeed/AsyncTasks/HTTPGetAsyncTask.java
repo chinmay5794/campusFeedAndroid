@@ -92,7 +92,7 @@ public class HTTPGetAsyncTask extends AsyncTask<String,String,String> {
             }
         }
         else{
-            Log.w(TAG,"No internet connection");
+            Log.w(TAG, "No internet connection");
         }
         return null;
 
@@ -101,12 +101,16 @@ public class HTTPGetAsyncTask extends AsyncTask<String,String,String> {
     @Override
     protected void onPostExecute(String response) {
         super.onPostExecute(response);
-        if(response != null) {
-            listener.onHTTPDataReceived(response, url);
-            Log.e(TAG + "response:",response);
-        }
-        else{
-            Log.w(TAG,"Null response");
+        Log.i(TAG, response);
+        try {
+            if (response != null) {
+                Log.e(TAG + "response:", response);
+                listener.onHTTPDataReceived(response, url);
+            } else {
+                Log.w(TAG, "Null response");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
         if(!NetworkUtil.isNetworkAvailable(context)){
             Toast.makeText(context,"No internet connection",Toast.LENGTH_SHORT).show();

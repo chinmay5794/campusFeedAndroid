@@ -66,6 +66,7 @@ public class FollowedChannelsFragment extends ListFragment {
                 fetchFollowedChannelsData();
             }
         });
+
         return rootView;
     }
 
@@ -88,7 +89,7 @@ public class FollowedChannelsFragment extends ListFragment {
         Log.e(TAG, result);
         try {
             JSONObject jsonObject = new JSONObject(result);
-            JSONArray jsonArray = jsonObject.getJSONArray(Constants.Keys.USER_CHANNELS);
+            JSONArray jsonArray = jsonObject.getJSONArray(Constants.Keys.FOLLOWED_CHANNELS);
             for(int i=0; i< jsonArray.length();i++){
                 ChannelDTO channelDTO = new ChannelDTO();
                 JSONObject jChannel = jsonArray.getJSONObject(i);

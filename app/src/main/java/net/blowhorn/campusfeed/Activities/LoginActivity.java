@@ -84,6 +84,7 @@ public class LoginActivity extends Activity implements View.OnClickListener, OnH
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        Log.i(TAG,jsonObject.toString());
         return jsonObject.toString();
     }
 
@@ -91,13 +92,13 @@ public class LoginActivity extends Activity implements View.OnClickListener, OnH
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.login_btn_login:
-                /*if(isFormValid()) {
+                if(isFormValid()) {
                     String loginJson = createLoginJsonString();
                     HTTPPostAsyncTask httpPostAsyncTask = new HTTPPostAsyncTask(this,true);
                     httpPostAsyncTask.setHTTPCompleteListener(this);
                     httpPostAsyncTask.execute(Constants.URL_LOGIN, loginJson);
-                }*/
-                loginToHome("14037");
+                }
+                //loginToHome("14037");
                 break;
         }
     }
@@ -150,13 +151,13 @@ public class LoginActivity extends Activity implements View.OnClickListener, OnH
         String status = null;
         String mAuthToken = null;
         try {
-            status = jResponse.getString(Constants.Keys.STATUS);
+            //status = jResponse.getString(Constants.Keys.STATUS);
             mAuthToken = jResponse.getString(Constants.Keys.AUTH_TOKEN);
         } catch (JSONException e) {
             e.printStackTrace();
             Log.i(TAG + "URL: " + url, "JSON Exception, probably no status key");
         }
-        if(status.equals(Constants.Status.SUCCESS)) {
+        if(true) {
             saveUserInSharedPrefs(jResponse);
             Constants.mAuthToken = mAuthToken; //saving token, use in calls later
             Log.i(TAG,"Token: " + Constants.mAuthToken);

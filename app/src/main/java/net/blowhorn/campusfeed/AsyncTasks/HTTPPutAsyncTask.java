@@ -15,6 +15,8 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicHeader;
+import org.apache.http.protocol.HTTP;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -67,6 +69,7 @@ public class HTTPPutAsyncTask extends AsyncTask<String,String,String> {
                 httpPut.setHeader("Accept", "application/json");
                 httpPut.setHeader("token", Constants.mAuthToken);
                 httpPut.setHeader("Content-type", "application/json");
+                stringEntity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
                 httpPut.setEntity(stringEntity);
 
                 HttpResponse httpResponse = httpClient.execute(httpPut);
@@ -108,13 +111,18 @@ public class HTTPPutAsyncTask extends AsyncTask<String,String,String> {
     @Override
     protected void onPostExecute(String response) {
         super.onPostExecute(response);
-        if(!response.isEmpty()) {
-            listener.onHTTPDataReceived(response, url);
+        try{
+            if(!response.isEmpty()) {
+                Log.e(TAG + "response:", response);
+                listener.onHTTPDataReceived(response, url);
+            }
+            else{
+                Log.w(TAG, "Null response");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        else{
-            Log.w(TAG,"Null response");
-        }
-        if(NetworkUtil.isNetworkAvailable(context)){
+        if(!NetworkUtil.isNetworkAvailable(context)){
             Toast.makeText(context, "No internet connection", Toast.LENGTH_SHORT).show();
         }
     }

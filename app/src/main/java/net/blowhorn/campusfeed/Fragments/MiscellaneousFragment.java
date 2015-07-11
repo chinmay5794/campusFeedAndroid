@@ -1,12 +1,15 @@
 package net.blowhorn.campusfeed.Fragments;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import net.blowhorn.campusfeed.Activities.MiscFormsActivity;
 import net.blowhorn.campusfeed.AsyncTasks.HTTPGetAsyncTask;
 import net.blowhorn.campusfeed.Interfaces.OnHTTPCompleteListener;
 import net.blowhorn.campusfeed.R;
@@ -20,7 +23,7 @@ import org.json.JSONObject;
 public class MiscellaneousFragment extends Fragment {
 
     private String TAG = "MiscellaneousFragment";
-
+    private String userId;
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -28,7 +31,18 @@ public class MiscellaneousFragment extends Fragment {
         // properly.
         View rootView = inflater.inflate(
                 R.layout.fragment_settings, container, false);
+        userId = getActivity().getIntent().getExtras().getString(Constants.Keys.USER_ID);
         Bundle args = getArguments();
+        Button createChannel = (Button) rootView.findViewById(R.id.misc_btn_createChannel);
+        createChannel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MiscFormsActivity.class);
+                intent.putExtra("Purpose","CreateChannel");
+                intent.putExtra(Constants.Keys.USER_ID,userId);
+                startActivity(intent);
+            }
+        });
         if(!Constants.miscellaneousDataFetched){
             fetchMiscellaneousData();
         }
@@ -45,9 +59,9 @@ public class MiscellaneousFragment extends Fragment {
                 Constants.miscellaneousDataFetched = true;
             }
         });
-        String userId = getActivity().getIntent().getExtras().getString(Constants.Keys.USER_ID);
-        httpGetAsyncTaskMiscellaneous.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,
-                Constants.URL_SHOW_PENDING_REQUESTS(userId), jsonObjectMiscellaneous.toString());
+        //httpGetAsyncTaskMiscellaneous.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,
+        //        Constants.URL_SHOW_PENDING_REQUESTS(userId), jsonObjectMiscellaneous.toString());
+
     }
 
 }

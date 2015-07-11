@@ -14,7 +14,7 @@ public class Constants {
         public static final String PASSWORD = "password";
         public static final String AUTH_TOKEN = "mAuthToken";
         public static final String IS_LOGGED_IN = "is_logged_in";
-        public static final String USER_CHANNELS = "user_channels";
+        public static final String FOLLOWED_CHANNELS = "followed_channels";
         public static final String ALL_CHANNELS = "all_channels";
         public static final String CHANNEL_ID = "channel_id";
         public static final String CHANNEL_NAME = "channel_name";
@@ -52,7 +52,7 @@ public class Constants {
 
     public static String mAuthToken = null;
 
-    public static final String URL_ROOT = "http://192.168.1.12:8080";
+    public static final String URL_ROOT = "http://192.168.1.69:9080";
     public static final String URL_LOGIN = URL_ROOT + "/login";
     public static final String URL_GET_ALL_CHANNELS = URL_ROOT + "/channels";
 
